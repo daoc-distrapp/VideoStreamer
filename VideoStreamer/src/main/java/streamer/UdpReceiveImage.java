@@ -17,11 +17,13 @@ import javax.swing.JLabel;
  * @author dordonez@ute.edu.ec
  */
 public class UdpReceiveImage extends Thread {
+	private final String grupoMc;
+	private final int puerto;  
     private final JLabel monitor;
-    private final int puerto;
     private final int bufferSize;
     
-    public UdpReceiveImage(JLabel monitor, int puerto, int bufferSize) {
+    public UdpReceiveImage(String grupoMc, int puerto, JLabel monitor, int bufferSize) {
+    	this.grupoMc = grupoMc;
         this.monitor = monitor;
         this.puerto = puerto;
         this.bufferSize = bufferSize;
@@ -32,7 +34,7 @@ public class UdpReceiveImage extends Thread {
         //Captura las imágenes enviadas por el sistema remoto y las muestra en el monitor (JLabel)
         try {
             MulticastSocket socket = new MulticastSocket(puerto);
-            InetAddress mcGroupIp = InetAddress.getByName(Constants.UDP_HOST);
+            InetAddress mcGroupIp = InetAddress.getByName(grupoMc);
             socket.joinGroup(mcGroupIp);
             
             byte[] buffer = new byte[bufferSize];

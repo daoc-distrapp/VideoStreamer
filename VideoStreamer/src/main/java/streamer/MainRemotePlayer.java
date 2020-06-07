@@ -26,7 +26,7 @@ public class MainRemotePlayer {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
-        UdpReceiveImage udpReceive = new UdpReceiveImage(panel.getMonitor(), Constants.UDP_PORT, Constants.BUFFER_SIZE);
+        UdpReceiveImage udpReceive = new UdpReceiveImage(Constants.UDP_MC_IP, Constants.UDP_PORT, panel.getMonitor(), Constants.BUFFER_SIZE);
         udpReceive.start();
     }
     
