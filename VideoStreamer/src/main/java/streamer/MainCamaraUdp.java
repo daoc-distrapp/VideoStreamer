@@ -8,7 +8,7 @@ import com.github.sarxos.webcam.WebcamResolution;
 public class MainCamaraUdp {
 
 	public static void main(String[] args) throws IOException {
-		UdpSendImage udpSend = new UdpSendImage(Constants.UDP_HOST, Constants.UDP_PORT);
+		UdpSendImage udpSend = new UdpSendImage(Constants.UDP_MC_IP, Constants.UDP_PORT);
 		udpSend.start();
 		
 		Webcam webcam = Webcam.getDefault();
